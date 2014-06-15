@@ -1,0 +1,19 @@
+{
+  "name": "baby-pool",
+  "version": "0.0.0",
+  "description": "A voting pool for guessing an expectant babies due date.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/slickplaid/baby-pool.git"
+  },
+  "author": "Evan Johnson (evan@slicklabs.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slickplaid/baby-pool/issues"
+  },
+  "homepage": "https://github.com/slickplaid/baby-pool"
+}
