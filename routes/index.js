@@ -27,6 +27,7 @@ exports.saveEntry = function(req, res) {
 };
 
 exports.ipn = function(req, res) {
+	res.send(200);
 	ipn.verify(req.body, function(err, msg) {
 		console.log('Paypal Message', err, msg);
 	});
