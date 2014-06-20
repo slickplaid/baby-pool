@@ -1,0 +1,14 @@
+{
+  "name": "flotr2",
+  "homepage": "https://github.com/HumbleSoftware/Flotr2",
+  "_release": "b4caee36a8",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "b4caee36a8d875b8ec5ccb2ea787a7e9b4a39919"
+  },
+  "_source": "git://github.com/HumbleSoftware/Flotr2.git",
+  "_target": "*",
+  "_originalSource": "flotr2",
+  "_direct": true
+}

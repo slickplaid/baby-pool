@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= title %></title>
+
+		<link href='http://fonts.googleapis.com/css?family=Tangerine|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css'>
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap-theme.min.css'>
+		<link rel='stylesheet' href='/fontawesome/css/font-awesome.min.css'>
+		<link rel='stylesheet' href='/payment-webfont/style.css'>
+		<link rel='stylesheet' href='/jquery.ui/themes/base/jquery.ui.base.css'>
+		<link rel='stylesheet' href='/jquery.ui/themes/base/jquery.ui.theme.css'>
+		<link rel='stylesheet' href='/stylesheets/style.css'>
+	</head>
+	<body class="frame-0">
+
+		<!-- Introduction -->
+		<section id="start" class="row boxes box-0">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					Our baby pool is a fun contest where friends, co-workers, and family can try to guess the baby&#8217;s birthday, weight, length, hair color, eye color, and submit a special message to be read by <%= settings.motherName %><%= settings.fatherName ? ' and '+settings.fatherName : '' %> shortly after birth.
+				</p>
+				<p class="text-center button-bottom">
+					<button class="btn btn-primary btn-lg forward"><i class="fa fa-child"></i> Enter the pool</button>
+					<a href="/results" class="btn btn-success btn-lg skip-to-results"><i class="fa fa-mortar-board"></i> Skip to results</a>
+				</p>
+			</div>
+		</section>
+
+		<!-- Registration -->
+		<section id="registration" class="row boxes box-1">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					To start out, we&#8217;ll first need a little information about you.
+				</p>
+				<form id="form-register" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="firstName" class="col-sm-2 control-label">First Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="firstName" placeholder="ex. John">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="col-sm-2 control-label">Last Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="lastName" placeholder="ex. Snow">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="email" placeholder="ex. johnsnow@knowsnothing.com">
+							<span class="help-block text-info">We will never use your email address to send you spam. This will only be used to contact you if you win, and information for when the baby arrives.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">Phone Number</label>
+						<div class="col-sm-10">
+							<input type="tel" class="form-control" id="phone" placeholder="ex. 555-867-5309">
+							<span class="help-block text-info">Just an alternative way of contacting you.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
+							<button class="btn btn-primary btn-lg forward"><i class="fa fa-play"></i> Continue</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<!-- Baby Guessing -->
+		<section id="guesses" class="row boxes box-2">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					Now, give us some information on how you think the baby will be born.
+				</p>
+				<form id="form-guessing" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="date" class="col-sm-2 control-label">Date of Birth</label>
+						<div class="col-sm-10">
+							<input type="date" class="form-control" id="date" placeholder="Due date: 8/6/2014" value="<%= settings.dueDateToString %>">
+							<span class="help-block text-info">The estimated due date is August 6th, 2014</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="time" class="col-sm-2 control-label">Time of Birth</label>
+						<div class="col-sm-10">
+							<input type="time" class="form-control" id="time" placeholder="Example: 8:21 AM">
+							<span class="help-block text-info">Use the arrow keys on your keyboard to select the correct time if the number keys do not work. If AM or PM do not work, use the up or down arrow on your keyboard when it is selected. If on mobile or tablet, a dialog box should show up for you to use when you tap the field.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="weight" class="col-sm-2 control-label">Weight</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control hidden" id="weight" min="4" max="12">
+							<div class="slider weight"></div>
+							<span class="help-block slider-text"></span>
+							<span class="help-block text-info">The average birth weight is 7.5 pounds (7 pounds, 8 ounces). Click or tap on the bar to change the value.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="height" class="col-sm-2 control-label">Height</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control hidden" id="height" min="4" max="12">
+							<div class="slider height"></div>
+							<span class="help-block slider-text"></span>
+							<span class="help-block text-info">The average birth height is 19.75 inches. Click or tap on the bar to change the value.</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="hair" class="col-sm-2 control-label">Hair Color</label>
+						<div class="col-sm-10">
+							<div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-bald"> <i class="fa fa-reddit" style="color: white"></i> Bald
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-black"> <i class="fa fa-empire" style="color: black"></i> Black
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-blonde"> <i class="fa fa-drupal" style="color: #9B870C"></i> Blonde
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-brown"> <i class="fa fa-pied-piper-alt" style="color: brown"></i> Brown
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-red"> <i class="fa fa-rebel" style="color: red"></i> Red
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="hair" class="col-sm-2 control-label">Eye Color</label>
+						<div class="col-sm-10">
+							<div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-bald"> <i class="fa fa-eye" style="color: blue"></i> Blue
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-black"> <i class="fa fa-eye" style="color: brown"></i> Brown
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-blonde"> <i class="fa fa-eye" style="color: gray"></i> Gray
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-brown"> <i class="fa fa-eye" style="color: green"></i> Green
+							  </label>
+							  <label class="btn btn-default btn-lg">
+							    <input type="radio" name="hair" id="hair-red"> <i class="fa fa-eye" style="color: hazel"></i> Hazel
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="time" class="col-sm-2 control-label">Comments to<br><%= settings.motherName %><%= settings.fatherName ? ' and '+settings.fatherName : '' %></label>
+						<div class="col-sm-10">
+							<textarea class="form-control" rows="3"></textarea>
+							<span class="help-block text-info">Use this field to send any comments, congratulations, or well wishes</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
+							<button class="btn btn-primary btn-lg forward"><i class="fa fa-play"></i> Continue</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<!-- Donation Request -->
+		<section id="donation-request" class="row boxes box-3">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					Thank you for taking the time to enter the <%= settings.babyName %> guessing pool! You&#8217;re almost done. You can choose to either simply submit your results to our tally or donate to be entered to win a cash prize. Please feel free to guess as many times as you want. There is no obligation to donate. Once the baby is born, we will send out a message to everyone from <%= settings.motherName %><%= settings.fatherName ? ' and '+settings.fatherName : '' %> shortly after birth and let you know who won! While it is not necessary to guess and enter the baby pool, to keep the money portion of the winning fair it is necessary to donate at least $5 to win money. We have set up a way to donate via PayPal, <i class="fa fa-bitcoin"></i>itcoin, or &ETH;ogecoin. If you would like to donate, please select one of the options below. If you would like to donate using a credit card, please use the PayPal donation method. If you would prefer to donate by check or cash, please see <%= settings.motherName %><%= settings.fatherName ? ' or '+settings.fatherName : '' %> or email <a href="mailto:<%= settings.email %>"><%= settings.email %></a>
+				</p>
+				<p class="text-center button-bottom">
+					<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
+					<button class="btn btn-primary btn-lg forward"><i class="fa fa-paper-plane"></i> Submit without Donating</button><br><br>
+					<button class="btn btn-success btn-lg donate-paypal"><i class="fa fa-credit-card"></i> Donate with <i class="pw pw-paypal-new"></i></button>
+					<button class="btn btn-success btn-lg donate-bitcoin">Donate with <i class="pw pw-bitcoin-sign"></i></button>
+					<button class="btn btn-success btn-lg donate-dogecoin">Donate with &ETH;ogecoin</button>
+				</p>
+			</div>
+		</section>
+
+		<!-- No Donation Thank You -->
+		<section id="thanks" class="row boxes box-4">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					Thank you sharing this special moment with us and for submitting your guesses! We will be sure to reach out to you with more information once the baby has been born.
+				</p>
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
+					<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
+					<a href="/results" class="btn btn-success btn-lg skip-to-results"><i class="fa fa-mortar-board"></i> See results</a>
+				</p>
+			</div>
+		</section>
+
+		<!-- Paypal -->
+		<section id="donate-paypal" class="row boxes box-5">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					If you donate $5, 50% of all donations will be invested for our babies future, 25% will be rewarded to the person who guesses the closest date and time to the actual birth date, and 25% will be rewarded to the person who guesses the closest height and weight. Only those who donate will be eligible to win money. If you decide to donate more than $5 on any single guess, any amount over $5 will go directly to <%= settings.babyName %> and invested to pay for their education and future.
+				</p>
+				<p class="text-center">
+					If you would like to enter more than one guess and donate $5 or more each time, every entry with a donation will be an entry to win the cash prize.
+				</p>
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
+					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
+					<button class="btn btn-success btn-lg donate-paypal"><i class="fa fa-credit-card"></i> Donate with <i class="pw pw-paypal-new"></i></button>
+				</p>
+			</div>
+		</section>
+
+		<!-- Bitcoin -->
+		<section id="donate-bitcoin" class="row boxes box-6">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					If you donate $5, 50% of all donations will be invested for our babies future, 25% will be rewarded to the person who guesses the closest date and time to the actual birth date, and 25% will be rewarded to the person who guesses the closest height and weight. Only those who donate will be eligible to win money. If you decide to donate more than $5 on any single guess, any amount over $5 will go directly to <%= settings.babyName %> and invested to pay for their education and future.
+				</p>
+				<p class="text-center">
+					If you would like to enter more than one guess and donate $5 or more each time, every entry with a donation will be an entry to win the cash prize.
+				</p>
+				<p class="text-center">
+					Donations made through cryptocurrency have $5 worth of the fair market value in US dollars converted and added to the total pool value. Please contact me at <a href="mailto:<%= settings.email %>"><%= settings.email %></a> if you wish to donate in this manner so I can link the transaction to your guess and add it to the total award money. Currency donated in this fashion will follow the same rules as above, and any amount over $5 per donation will be donated at 100% to <%= settings.babyName %>&#8217;s future fund.
+				</p>
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
+					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
+					<button class="btn btn-success btn-lg donate-bitcoin">Donate with <i class="pw pw-bitcoin-sign"></i></button>
+				</p>
+			</div>
+		</section>
+
+		<!-- Dogecoin -->
+		<section id="donate-dogecoin" class="row boxes box-7">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">
+					If you donate $5, 50% of all donations will be invested for our babies future, 25% will be rewarded to the person who guesses the closest date and time to the actual birth date, and 25% will be rewarded to the person who guesses the closest height and weight. Only those who donate will be eligible to win money. If you decide to donate more than $5 on any single guess, any amount over $5 will go directly to <%= settings.babyName %> and invested to pay for their education and future.
+				</p>
+				<p class="text-center">
+					If you would like to enter more than one guess and donate $5 or more each time, every entry with a donation will be an entry to win the cash prize.
+				</p>
+				<p class="text-center">
+					Donations made through cryptocurrency have $5 worth of the fair market value in US dollars converted and added to the total pool value. Please contact me at <a href="mailto:<%= settings.email %>"><%= settings.email %></a> if you wish to donate in this manner so I can link the transaction to your guess and add it to the total award money. Currency donated in this fashion will follow the same rules as above, and any amount over $5 per donation will be donated at 100% to <%= settings.babyName %>&#8217;s future fund.
+				</p>
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
+					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
+					<button class="btn btn-success btn-lg donate-dogecoin">Donate with &ETH;ogecoin</button>
+				</p>
+			</div>
+		</section>
+
+		<script>var defaultDate = <%= settings.dueDateString %>;</script>
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/jquery.ui/ui/jquery.ui.core.js"></script>
+		<script src="/jquery.ui/ui/jquery.ui.widget.js"></script>
+		<script src="/jquery.ui/ui/jquery.ui.mouse.js"></script>
+		<script src="/jquery.ui/ui/jquery.ui.datepicker.js"></script>
+		<script src="/jquery.ui/ui/jquery.ui.slider.js"></script>
+		<script src="/jqueryui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="/javascripts/core.js"></script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= title %></title>
+
+		<link href='http://fonts.googleapis.com/css?family=Tangerine|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css'>
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap-theme.min.css'>
+		<link rel='stylesheet' href='/fontawesome/css/font-awesome.min.css'>
+		<link rel='stylesheet' href='/stylesheets/style.css'>
+	</head>
+	<body class="frame-8">
+
+		<!-- Introduction -->
+		<section id="start" class="row boxes box-8">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+				<p class="text-center">Here are the real-time results for our baby pool.</p>
+				
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-child"></i> Make a guess</a>
+				</p>
+
+				<div class="chart-container">
+					<div id="chart-date" class="chart container"></div>
+					<div id="chart-time" class="chart container"></div>
+					<div id="chart-weight" class="chart container"></div>
+					<div id="chart-height" class="chart container"></div>
+					<div id="chart-hair" class="chart container"></div>
+					<div id="chart-eye" class="chart container"></div>
+				</div>
+
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-child"></i> Make a guess</a>
+				</p>
+			</div>
+		</section>
+
+		<script>var defaultDate = <%= settings.dueDateString %>;</script>
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="/lib/excanvas.js"></script>
+    <![endif]-->
+		<script src="/flotr2/flotr2.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/javascripts/results.js"></script>
+	</body>
+</html>

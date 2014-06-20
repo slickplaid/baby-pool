@@ -1,0 +1,38 @@
+/* Common */
+body {
+	background: url('/images/file000177357244.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	color:#fff;
+  background-color:#cff;
+  margin-top: 2em; 
+}
+
+body { font: 14px 'Open Sans', Helvetica, Arial, sans-serif; }
+h1 { font-family: 'Tangerine', cursive; }
+a { color: #00B7FF; }
+.help-block { color: #f0f0f0; }
+.backward, .forward { cursor: pointer; cursor: hand; }
+.row { margin-right: 0; }
+.btn { margin-top: 1em; }
+p, .help-block { text-shadow: 1px 1px 1px #333; }
+.chart-container { padding: 0.5em 15px; background: #fff; border-radius: 3px; box-shadow: 4px 4px 2px #333; }
+.chart { height: 450px; width: 95%; margin: 1em auto; }
+.flotr-axis-title { color: #000; }
+
+/* Box */
+.box { margin-bottom: 64px; padding: 1em 40px; background: rgba(33, 33, 33, 0.4); border-radius: 10px; }
+.box h1 { font-size: 64px; text-align: center; padding-bottom: 0.5em; text-shadow: 2px 2px 0 #333; }
+.box .button-bottom { margin-top: 3em; }
+
+body.frame-0 { background-image: url('/images/e1386867903711.jpg'); }
+body.frame-1 { background-image: url('/images/baby-hands.jpeg'); }
+body.frame-2 { background-image: url('/images/file0001162934373.jpg'); }
+body.frame-3 { background-image: url('/images/hr_baby.jpg'); }
+body.frame-4 { background-image: url('/images/file000177357244.jpg'); }
+body.frame-5 { background-image: url('/images/28182.jpg'); }
+body.frame-6 { background-image: url('/images/bitcoins.jpg'); }
+body.frame-7 { background-image: url('/images/dogecoin.jpg'); }
+body.frame-8 { background-image: url('/images/file000118360846.jpg'); }
