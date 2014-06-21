@@ -50,7 +50,6 @@ exports.loadSocketIO = function(socketio) {
 
 	io.on('connection', function(socket) {
 		socket.emit('chartData', chartData);
-		console.log('A user connected.');
 	});
 };
 
@@ -175,7 +174,6 @@ function parseChartData(guesses, callback) {
 
 	chartData.date.options.xaxis.max = +highestDate;
 	callback(null, chartData);
-	console.log(chartData);
 };
 
 function parseDate(dateString) {
