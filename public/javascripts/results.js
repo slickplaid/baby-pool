@@ -1,8 +1,25 @@
-$(function() {
+var socket = io(), chartData = {};
 
-	updateDate();
-
+socket.on('chartData', function(cd) {
+	chartData = cd;
+	updateChartData(cd);
+	console.log(cd);
 });
+
+$(function() {
+	$(window).on('resize', function() {
+		updateChartData(chartData);
+	});
+});
+
+function updateChartData(cd) {
+	Flotr.draw(document.getElementById('chart-date'), cd.date.data, cd.date.options);
+	Flotr.draw(document.getElementById('chart-time'), cd.time.data, cd.time.options);
+	Flotr.draw(document.getElementById('chart-weight'), cd.weight.data, cd.weight.options);
+	Flotr.draw(document.getElementById('chart-height'), cd.height.data, cd.height.options);
+	Flotr.draw(document.getElementById('chart-hair'), cd.hair.data, cd.hair.options);
+	Flotr.draw(document.getElementById('chart-eye'), cd.eyes.data, cd.eyes.options);
+};
 
 function updateDate(data) {
 	if(!data) {
@@ -25,17 +42,17 @@ function updateDate(data) {
 
 		data = {
 			data: points,
-			bars: {
-				show: true,
-				barWidth: 0.8,
-				lineWidth: 0,
-				fillColor: {
-          colors: ['#CB4B4B', '#fff'],
-          start: 'top',
-          end: 'bottom'					
-				},
-        fillOpacity: 0.8
-			}
+			// bars: {
+			// 	show: true,
+			// 	barWidth: 0.8,
+			// 	lineWidth: 0,
+			// 	fillColor: {
+   //        colors: ['#CB4B4B', '#fff'],
+   //        start: 'top',
+   //        end: 'bottom'					
+			// 	},
+   //      fillOpacity: 0.8
+			// }
 		};
 
 		var markers = {
@@ -49,33 +66,10 @@ function updateDate(data) {
 	var container = document.getElementById('chart-date');
 	var graph;
 
-	graph = Flotr.draw(container, [data, markers], {
+	graph = Flotr.draw(container, [points], {
 		grid: { minorVerticalLines: true },
 		yaxis: { min: 0 },
 		xaxis: { mode: 'time', min: +Date.UTC(2014, 5, 18), title: 'Date of Arrival' },
 		bars: { show: true }
 	});
 };
-
-// (function basic(container) {
-
-//   var
-//     d1 = [[0, 3], [4, 8], [8, 5], [9, 13]], // First data series
-//     d2 = [],                                // Second data series
-//     i, graph;
-
-//   // Generate first data set
-//   for (i = 0; i < 14; i += 0.5) {
-//     d2.push([i, Math.sin(i)]);
-//   }
-
-//   // Draw Graph
-//   graph = Flotr.draw(container, [ d1, d2 ], {
-//     xaxis: {
-//       minorTickFreq: 4
-//     }, 
-//     grid: {
-//       minorVerticalLines: true
-//     }
-//   });
-// })(document.getElementById("chart-datetime"));

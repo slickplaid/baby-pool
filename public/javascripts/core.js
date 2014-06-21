@@ -1,3 +1,16 @@
+var preloadImgs = [
+		'/images/e1386867903711.jpg',
+		'/images/baby-hands.jpeg',
+		'/images/file0001162934373.jpg',
+		'/images/hr_baby.jpg',
+		'/images/file000177357244.jpg',
+		'/images/28182.jpg',
+		'/images/bitcoins.jpg',
+		'/images/dogecoin.jpg',
+		'/images/file000118360846.jpg',
+		'/images/bite.jpg'
+];
+
 $(function() {
 	$('.datepicker').datepicker({ defaultDate: defaultDate });
 	
@@ -34,6 +47,10 @@ $(function() {
 		changeFrame(++frameId);
 		var id = $('.box-'+frameId).attr('id');
 		history.pushState({ page: frameId }, document.title, '/'+id);
+		preload([preloadImgs[frameId+1]]);
+		if(frameId === 3) {
+			preload([preloadImgs[5], preloadImgs[6], preloadImgs[7]]);
+		}
 	});
 	$('.backward').click(function(e) {
 		e.preventDefault();
@@ -79,18 +96,15 @@ $(function() {
 		changeFrame(e.state.page);
 	});
 
-	preload([
-		'/images/e1386867903711.jpg',
-		'/images/file000177357244.jpg',
-		'/images/file0001162934373.jpg',
-		'/images/file000118360846.jpg',
-		'/images/hr_baby.jpg',
-		'/images/28182.jpg',
-		'/images/bite.jpg',
-		'/images/baby-hands.jpeg',
-		'/images/bitcoins.jpg',
-		'/images/dogecoin.jpg'
-	]);
+	preload([preloadImgs[0], preloadImgs[1]]);
+
+	$(document).on('blur', 'input, .ui-slider-handle', saveForm);
+	$(document).on('click', '.save-form', saveForm);
+	$(document).on('click', '.backward-to-donate-choice', resetDonation);	
+	$(document).on('click', '.donate-paypal', donate('paypal'));
+	$(document).on('click', '.donate-bitcoin', donate('bitcoin'));
+	$(document).on('click', '.donate-dogecoin', donate('dogecoin'));
+
 });
 
 function changeFrame(frameNum) {
@@ -113,3 +127,20 @@ function preload(arrayOfImages) {
     (new Image()).src = this;
   });
 }
+
+function saveForm(e) {
+	var data = $('form').not('.exclude').serialize();
+	$.post('/saveEntry', data);
+};
+
+function resetDonation(e) {
+	$('.toggle-paypal, .toggle-bitcoin, .toggle-dogecoin').val(false);
+	saveForm();
+};
+
+function donate(type) {
+	return function(e) {
+		$('.toggle-'+type).val(true);
+		saveForm();
+	};
+};

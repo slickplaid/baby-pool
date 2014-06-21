@@ -7,7 +7,15 @@ var tracking = require('../models/tracking');
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: settings.applicationTitle });
+	tracking.getUserId(function(err, uid) {
+		res.locals.uid = uid;
+		res.locals._csrf = req.csrfToken();
+  	res.render('index', { title: settings.applicationTitle });
+	});
+};
+
+exports.success = function(req, res) {
+	res.render('success', { title: settings.applicationTitle });
 };
 
 exports.refresh = function(req, res) {
@@ -23,7 +31,8 @@ exports.results = function(req, res) {
  */
 
 exports.saveEntry = function(req, res) {
-
+	res.send(200);
+	tracking.saveEntry(req.body);
 };
 
 exports.ipn = function(req, res) {

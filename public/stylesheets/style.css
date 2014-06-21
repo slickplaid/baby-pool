@@ -18,9 +18,12 @@ a { color: #00B7FF; }
 .row { margin-right: 0; }
 .btn { margin-top: 1em; }
 p, .help-block { text-shadow: 1px 1px 1px #333; }
-.chart-container { padding: 0.5em 15px; background: #fff; border-radius: 3px; box-shadow: 4px 4px 2px #333; }
-.chart { height: 450px; width: 95%; margin: 1em auto; }
-.flotr-axis-title { color: #000; }
+.chart-container { padding: 0.5em 15px; background: #fff; border-radius: 3px; box-shadow: 4px 4px 2px #333; overflow: hidden; }
+.chart { height: 200px; width: 95%; margin: 1em auto; }
+#chart-eye, #chart-hair { height: 300px; width: 50%; float: left; }
+.flotr-axis-title, .flotr-titles { color: #000; }
+.bitcoin-address { font-family: 'Courier New', monospace; }
+.dogecoin-address, .box-7 { font-family: 'Comic Sans', 'Comic Sans MS', cursive; font-size: 1.3em; }
 
 /* Box */
 .box { margin-bottom: 64px; padding: 1em 40px; background: rgba(33, 33, 33, 0.4); border-radius: 10px; }
@@ -35,4 +38,4 @@ body.frame-4 { background-image: url('/images/file000177357244.jpg'); }
 body.frame-5 { background-image: url('/images/28182.jpg'); }
 body.frame-6 { background-image: url('/images/bitcoins.jpg'); }
 body.frame-7 { background-image: url('/images/dogecoin.jpg'); }
-body.frame-8 { background-image: url('/images/file000118360846.jpg'); }
+body.frame-8 { background-image: url('/images/bite.jpg'); }

@@ -41,33 +41,33 @@
 					<div class="form-group">
 						<label for="firstName" class="col-sm-2 control-label">First Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="firstName" placeholder="ex. John">
+							<input type="text" class="form-control" id="firstName" placeholder="ex. John" name="firstName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="lastName" class="col-sm-2 control-label">Last Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="lastName" placeholder="ex. Snow">
+							<input type="text" class="form-control" id="lastName" placeholder="ex. Snow" name="lastName">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="email" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" placeholder="ex. johnsnow@knowsnothing.com">
+							<input type="email" class="form-control" id="email" placeholder="ex. johnsnow@knowsnothing.com" name="email">
 							<span class="help-block text-info">We will never use your email address to send you spam. This will only be used to contact you if you win, and information for when the baby arrives.</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="phone" class="col-sm-2 control-label">Phone Number</label>
 						<div class="col-sm-10">
-							<input type="tel" class="form-control" id="phone" placeholder="ex. 555-867-5309">
+							<input type="tel" class="form-control" id="phone" placeholder="ex. 555-867-5309" name="phone">
 							<span class="help-block text-info">Just an alternative way of contacting you.</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
-							<button class="btn btn-primary btn-lg forward"><i class="fa fa-play"></i> Continue</button>
+							<button class="btn btn-primary btn-lg save-form forward"><i class="fa fa-play"></i> Continue</button>
 						</div>
 					</div>
 				</form>
@@ -85,21 +85,21 @@
 					<div class="form-group">
 						<label for="date" class="col-sm-2 control-label">Date of Birth</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" id="date" placeholder="Due date: 8/6/2014" value="<%= settings.dueDateToString %>">
+							<input type="date" class="form-control" id="date" placeholder="Due date: 8/6/2014" value="<%= settings.dueDateToString %>" name="date">
 							<span class="help-block text-info">The estimated due date is August 6th, 2014</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="time" class="col-sm-2 control-label">Time of Birth</label>
 						<div class="col-sm-10">
-							<input type="time" class="form-control" id="time" placeholder="Example: 8:21 AM">
+							<input type="time" class="form-control" id="time" placeholder="Example: 8:21 AM" name="time">
 							<span class="help-block text-info">Use the arrow keys on your keyboard to select the correct time if the number keys do not work. If AM or PM do not work, use the up or down arrow on your keyboard when it is selected. If on mobile or tablet, a dialog box should show up for you to use when you tap the field.</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="weight" class="col-sm-2 control-label">Weight</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control hidden" id="weight" min="4" max="12">
+							<input type="text" class="form-control hidden" id="weight" min="4" max="12" name="weight">
 							<div class="slider weight"></div>
 							<span class="help-block slider-text"></span>
 							<span class="help-block text-info">The average birth weight is 7.5 pounds (7 pounds, 8 ounces). Click or tap on the bar to change the value.</span>
@@ -108,7 +108,7 @@
 					<div class="form-group">
 						<label for="height" class="col-sm-2 control-label">Height</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control hidden" id="height" min="4" max="12">
+							<input type="text" class="form-control hidden" id="height" min="4" max="12" name="height">
 							<div class="slider height"></div>
 							<span class="help-block slider-text"></span>
 							<span class="help-block text-info">The average birth height is 19.75 inches. Click or tap on the bar to change the value.</span>
@@ -117,58 +117,58 @@
 					<div class="form-group">
 						<label for="hair" class="col-sm-2 control-label">Hair Color</label>
 						<div class="col-sm-10">
-							<div class="btn-group" data-toggle="buttons">
+							<!-- <div class="btn-group" data-toggle="buttons"> -->
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-bald"> <i class="fa fa-reddit" style="color: white"></i> Bald
+							    <input type="radio" name="hair" id="hair-bald" value="hair-bald"> <i class="fa fa-reddit" style="color: white"></i> Bald
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-black"> <i class="fa fa-empire" style="color: black"></i> Black
+							    <input type="radio" name="hair" id="hair-black" value="hair-black"> <i class="fa fa-empire" style="color: black"></i> Black
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-blonde"> <i class="fa fa-drupal" style="color: #9B870C"></i> Blonde
+							    <input type="radio" name="hair" id="hair-blonde" value="hair-blonde"> <i class="fa fa-drupal" style="color: #9B870C"></i> Blonde
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-brown"> <i class="fa fa-pied-piper-alt" style="color: brown"></i> Brown
+							    <input type="radio" name="hair" id="hair-brown" value="hair-brown"> <i class="fa fa-pied-piper-alt" style="color: brown"></i> Brown
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-red"> <i class="fa fa-rebel" style="color: red"></i> Red
+							    <input type="radio" name="hair" id="hair-red" value="hair-red"> <i class="fa fa-rebel" style="color: red"></i> Red
 							  </label>
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="hair" class="col-sm-2 control-label">Eye Color</label>
 						<div class="col-sm-10">
-							<div class="btn-group" data-toggle="buttons">
+							<!-- <div class="btn-group" data-toggle="buttons"> -->
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-bald"> <i class="fa fa-eye" style="color: blue"></i> Blue
+							    <input type="radio" name="eyes" id="eyes-blue" value="eyes-blue"> <i class="fa fa-eye" style="color: blue"></i> Blue
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-black"> <i class="fa fa-eye" style="color: brown"></i> Brown
+							    <input type="radio" name="eyes" id="eyes-brown" value="eyes-brown"> <i class="fa fa-eye" style="color: brown"></i> Brown
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-blonde"> <i class="fa fa-eye" style="color: gray"></i> Gray
+							    <input type="radio" name="eyes" id="eyes-gray" value="eyes-gray"> <i class="fa fa-eye" style="color: gray"></i> Gray
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-brown"> <i class="fa fa-eye" style="color: green"></i> Green
+							    <input type="radio" name="eyes" id="eyes-green" value="eyes-green"> <i class="fa fa-eye" style="color: green"></i> Green
 							  </label>
 							  <label class="btn btn-default btn-lg">
-							    <input type="radio" name="hair" id="hair-red"> <i class="fa fa-eye" style="color: hazel"></i> Hazel
+							    <input type="radio" name="eyes" id="eyes-hazel" value="eyes-hazel"> <i class="fa fa-eye" style="color: hazel"></i> Hazel
 							  </label>
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="time" class="col-sm-2 control-label">Comments to<br><%= settings.motherName %><%= settings.fatherName ? ' and '+settings.fatherName : '' %></label>
 						<div class="col-sm-10">
-							<textarea class="form-control" rows="3"></textarea>
+							<textarea class="form-control" rows="3" name="comments"></textarea>
 							<span class="help-block text-info">Use this field to send any comments, congratulations, or well wishes</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
-							<button class="btn btn-primary btn-lg forward"><i class="fa fa-play"></i> Continue</button>
+							<button class="btn btn-primary btn-lg save-form forward"><i class="fa fa-play"></i> Continue</button>
 						</div>
 					</div>
 				</form>
@@ -184,10 +184,10 @@
 				</p>
 				<p class="text-center button-bottom">
 					<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
-					<button class="btn btn-primary btn-lg forward"><i class="fa fa-paper-plane"></i> Submit without Donating</button><br><br>
-					<button class="btn btn-success btn-lg donate-paypal"><i class="fa fa-credit-card"></i> Donate with <i class="pw pw-paypal-new"></i></button>
-					<button class="btn btn-success btn-lg donate-bitcoin">Donate with <i class="pw pw-bitcoin-sign"></i></button>
-					<button class="btn btn-success btn-lg donate-dogecoin">Donate with &ETH;ogecoin</button>
+					<button class="btn btn-primary btn-lg save-form forward"><i class="fa fa-paper-plane"></i> Submit without Donating</button><br><br>
+					<button class="btn btn-success btn-lg save-form donate-paypal"><i class="fa fa-credit-card"></i> Donate with <i class="pw pw-paypal-new"></i></button>
+					<button class="btn btn-success btn-lg save-form donate-bitcoin">Donate with <i class="pw pw-bitcoin-sign"></i></button>
+					<button class="btn btn-success btn-lg save-form donate-dogecoin">Donate with &ETH;ogecoin</button>
 				</p>
 			</div>
 		</section>
@@ -201,7 +201,6 @@
 				</p>
 				<p class="text-center button-bottom">
 					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
-					<button class="btn btn-default btn-lg backward"><i class="fa fa-backward"></i> Go Back</button>
 					<a href="/results" class="btn btn-success btn-lg skip-to-results"><i class="fa fa-mortar-board"></i> See results</a>
 				</p>
 			</div>
@@ -220,7 +219,12 @@
 				<p class="text-center button-bottom">
 					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
 					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
-					<button class="btn btn-success btn-lg donate-paypal"><i class="fa fa-credit-card"></i> Donate with <i class="pw pw-paypal-new"></i></button>
+					<form class="exclude text-center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="2PDQDQM3GW5GN">
+						<input type="hidden" name="uid" value="<%= uid %>">
+						<button type="submit" name="submit" class="btn btn-success btn-lg submit-paypal"><i class="fa fa-credit-card"></i> Submit and Donate with <i class="pw pw-paypal-new"></i></button>
+					</form>
 				</p>
 			</div>
 		</section>
@@ -238,10 +242,11 @@
 				<p class="text-center">
 					Donations made through cryptocurrency have $5 worth of the fair market value in US dollars converted and added to the total pool value. Please contact me at <a href="mailto:<%= settings.email %>"><%= settings.email %></a> if you wish to donate in this manner so I can link the transaction to your guess and add it to the total award money. Currency donated in this fashion will follow the same rules as above, and any amount over $5 per donation will be donated at 100% to <%= settings.babyName %>&#8217;s future fund.
 				</p>
+				<h2>Bitcoin Donation Address: <span class="bitcoin-address">19z6hGSUGLmUcyE4EC6gntWoQ5Pyh2CCo3</span></h2>
 				<p class="text-center button-bottom">
 					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
 					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
-					<button class="btn btn-success btn-lg donate-bitcoin">Donate with <i class="pw pw-bitcoin-sign"></i></button>
+					<button class="btn btn-success btn-lg donate-bitcoin">Submit and Donate with <i class="pw pw-bitcoin-sign"></i></button>
 				</p>
 			</div>
 		</section>
@@ -259,13 +264,22 @@
 				<p class="text-center">
 					Donations made through cryptocurrency have $5 worth of the fair market value in US dollars converted and added to the total pool value. Please contact me at <a href="mailto:<%= settings.email %>"><%= settings.email %></a> if you wish to donate in this manner so I can link the transaction to your guess and add it to the total award money. Currency donated in this fashion will follow the same rules as above, and any amount over $5 per donation will be donated at 100% to <%= settings.babyName %>&#8217;s future fund.
 				</p>
+				<h2>Dogecoin Donation Address: <span class="dogecoin-address">DPVYXVmTp6nHrt8JTZKga2CumU9jueTvV8</span></h2>
 				<p class="text-center button-bottom">
 					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
 					<button class="btn btn-default btn-lg backward-to-donate-choice"><i class="fa fa-backward"></i> Go Back</button>
-					<button class="btn btn-success btn-lg donate-dogecoin">Donate with &ETH;ogecoin</button>
+					<button class="btn btn-success btn-lg donate-dogecoin">Submit and Donate with &ETH;ogecoin</button>
 				</p>
 			</div>
 		</section>
+
+		<form class="hidden">
+			<input type="hidden" name="uid" value="<%= uid %>">
+			<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			<input type="hidden" class="toggle-paypal" name="paypal" value="false">
+			<input type="hidden" class="toggle-bitcoin" name="bitcoin" value="false">
+			<input type="hidden" class="toggle-dogecoin" name="dogecoin" value="false">
+		</form>
 
 		<script>var defaultDate = <%= settings.dueDateString %>;</script>
 		<script src="/jquery/dist/jquery.min.js"></script>

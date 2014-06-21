@@ -8,7 +8,11 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var io = require('socket.io')();
+var csrf = require('csurf');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+var dbconfig = require('./dbconfig');
+var tracking = require('./models/tracking');
 
 var app = express();
 
@@ -21,6 +25,9 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(cookieParser(dbconfig.sessionKeys[0]));
+app.use(cookieSession({ keys: dbconfig.sessionKeys }));
+app.use(csrf());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
@@ -42,6 +49,8 @@ app.get('/donate-paypal', routes.refresh);
 app.get('/donate-bitcoin', routes.refresh);
 app.get('/donate-dogecoin', routes.refresh);
 
+app.get('/payment-success', routes.success);
+
 app.get('/results', routes.results);
 
 app.post('/ipn', routes.ipn);
@@ -52,4 +61,5 @@ var io = require('socket.io')(server);
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+  tracking.loadSocketIO(io);
 });
