@@ -34,11 +34,10 @@ var getChartData = function(callback) {
 	if(typeof callback !== 'function') {
 		callback = function(){};
 	}
-	console.log('getChartData');
-	db.getAll('guess', function(err, guesses) {
-		console.log(guesses);
-		parseChartData(guesses, function(err) {
 
+	db.getAll('guess', function(err, guesses) {
+		if(!guesses) return callback('No guesses.');
+		parseChartData(guesses, function(err) {
 			callback(err);
 		});
 	});
