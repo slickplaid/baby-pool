@@ -42,6 +42,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 app.get('/registration', routes.refresh);
+app.get('/start', routes.refresh);
 app.get('/guesses', routes.refresh);
 app.get('/donation-request', routes.refresh);
 app.get('/thanks', routes.refresh);
