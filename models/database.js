@@ -1,6 +1,9 @@
 var redis = require('redis');
 var config = require('../dbconfig');
 
+if(!config.prefix) {
+	throw new Error('The database prefix can not be blank.')
+}
 /*
  * Set up Database Connection
  */
@@ -35,7 +38,7 @@ db.on('end', function() {
  */
 
 function isValidId(id, callback) {
-	db.get('baby:uid', function(err, maxId) {
+	db.get(config.prefix+':uid', function(err, maxId) {
 		callback(err, id <= maxId);
 	});
 };
@@ -45,7 +48,7 @@ function isValidId(id, callback) {
  */
 
 var getUID = function(callback) {
-	db.incr('baby:uid', callback);
+	db.incr(config.prefix+':uid', callback);
 };
 
 var save = function(id, type, data, callback, tries) {
