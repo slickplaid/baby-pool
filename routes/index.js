@@ -38,6 +38,11 @@ exports.saveEntry = function(req, res) {
 exports.ipn = function(req, res) {
 	res.send(200);
 	ipn.verify(req.body, function(err, msg) {
+		tracking.saveIPN({
+			status: msg,
+			err: err,
+			body: req.body
+		});
 		console.log('Paypal Message', req.body, err, msg);
 	});
 };

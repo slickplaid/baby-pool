@@ -51,6 +51,10 @@ var getUID = function(callback) {
 	db.incr(config.prefix+':uid', callback);
 };
 
+var getIPNID = function(callback) {
+	db.incr(config.prefix+':ipnid', callback);
+};
+
 var save = function(id, type, data, callback, tries) {
 	
 	if(!tries) tries = 0;
@@ -157,6 +161,7 @@ var getAll = function(type, callback, tries) {
 	});
 };
 
+exports.getIPNID = getIPNID;
 exports.on = db.on;
 exports.getUID = getUID;
 exports.save = save;
