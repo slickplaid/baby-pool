@@ -71,6 +71,7 @@ exports.loadSocketIO = function(socketio) {
 exports.getUserId = getUserId;
 exports.saveEntry = saveEntry;
 exports.getChartData = getChartData;
+exports.saveIPN = saveIPN;
 
 function getTimeNow() {
 	var year = new Date().getUTCFullYear();
