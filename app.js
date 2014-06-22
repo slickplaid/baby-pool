@@ -27,12 +27,13 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(cookieParser(dbconfig.sessionKeys[0]));
 app.use(cookieSession({ keys: dbconfig.sessionKeys }));
-app.use(csrf());
+// app.use(csrf()); // Causes problems with Paypal's IPN. Disabled until I can find a good fix.
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.locals.settings = require('./settings');
+app.locals._csrf = ''; // Related to the above Paypal IPN. Remove once fixed.
 
 // development only
 if ('development' == app.get('env')) {

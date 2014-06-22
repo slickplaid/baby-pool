@@ -30,6 +30,21 @@ var saveEntry = function(body, callback) {
 	});
 };
 
+var saveIPN = function(ipn, callback) {
+	if(typeof callback !== 'function') {
+		callback = function(){};
+	}
+
+	if(!ipn) {
+		return callback('Invalid IPN Data');
+	}
+
+	db.getIPNID(function(err, ipnid) {
+		if(err) return callback('Unable to retrieve valid IPN ID');
+		db.save(ipnid, 'ipn', ipn, callback);
+	});
+};
+
 var getChartData = function(callback) {
 	if(typeof callback !== 'function') {
 		callback = function(){};
@@ -172,7 +187,7 @@ function parseChartData(guesses, callback) {
 	chartData.hair.data = hair;
 	chartData.eyes.data = eyes;
 
-	chartData.date.options.xaxis.max = +highestDate;
+	chartData.date.options.xaxis.max = +highestDate + 86400000;
 	callback(null, chartData);
 };
 
@@ -192,13 +207,13 @@ function parseDate(dateString) {
 	if(thisMonth > date[1] || date[1] > 12) {
 		return false;
 	}
-	thisMonth = thisMonth - 1;
+	thisMonth = thisMonth;
 
 	if(1 > date[2] || date[2] > 31) {
 		return false;
 	}
 
-	return Date.UTC(date[0], date[1], date[2]);
+	return Date.UTC(date[0], date[1]-1, date[2]);
 };
 
 function parseTime(timeString) {
@@ -241,7 +256,7 @@ var chartData = {
 			shadowSize: 0,
 			grid: { minorVerticalLines: true },
 			yaxis: { min: 0, title: '# of Entries', titleAngle: 90 },
-			xaxis: { mode: 'time', min: getTimeNow(), title: 'Birth Date' },
+			xaxis: { mode: 'time', min: +Date.UTC(2014, 6, 1), title: 'Birth Date' },
 			bars: { show: true, barWidth: 0.5 },
 			title: 'Birth Date'
 		}
