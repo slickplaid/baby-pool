@@ -9,7 +9,7 @@ var tracking = require('../models/tracking');
 exports.index = function(req, res){
 	tracking.getUserId(function(err, uid) {
 		res.locals.uid = uid;
-		res.locals._csrf = req.csrfToken();
+		res.locals._csrf = ''; //req.csrfToken();
   	res.render('index', { title: settings.applicationTitle });
 	});
 };
