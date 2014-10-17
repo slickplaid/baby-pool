@@ -54,6 +54,7 @@ app.get('/donate-dogecoin', routes.refresh);
 app.get('/payment-success', routes.success);
 
 app.get('/results', routes.results);
+app.get('/baby-admin', routes.admin);
 
 app.post('/ipn', routes.ipn);
 app.post('/saveEntry', routes.saveEntry);

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= title %></title>
+
+		<link href='http://fonts.googleapis.com/css?family=Tangerine|Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css'>
+		<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap-theme.min.css'>
+		<link rel='stylesheet' href='/fontawesome/css/font-awesome.min.css'>
+		<link rel='stylesheet' href='/stylesheets/style.css'>
+	</head>
+	<body class="frame-4">
+
+		<!-- No Donation Thank You -->
+		<section id="thanks" class="row boxes box-4">
+			<div class="<%= settings.boxClass %>">
+				<h1><%= title %></h1>
+<% guesses.forEach(function(guess, i) { -%>
+				<div class="chart-container" style="color: #333">
+					<h2><%= guess.firstName %> <%= guess.lastName %></h2>
+					<ul>
+<% for(var _id in guess) { -%>
+						<li><%= _id %>: <%= guess[_id] %></li>
+<% } -%>
+					</ul>
+				</div><br>
+<% }) %>
+				<p class="text-center button-bottom">
+					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
+					<a href="/results" class="btn btn-success btn-lg skip-to-results"><i class="fa fa-mortar-board"></i> See results</a>
+				</p>
+			</div>
+		</section>
+
+		<script>var defaultDate = <%= settings.dueDateString %>;</script>
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -30,6 +30,10 @@ var saveEntry = function(body, callback) {
 	});
 };
 
+var getAllGuesses = function(callback) {
+	db.getAll('guess', callback);
+};
+
 var saveIPN = function(ipn, callback) {
 	if(typeof callback !== 'function') {
 		callback = function(){};
@@ -72,6 +76,7 @@ exports.getUserId = getUserId;
 exports.saveEntry = saveEntry;
 exports.getChartData = getChartData;
 exports.saveIPN = saveIPN;
+exports.getAllGuesses = getAllGuesses;
 
 function getTimeNow() {
 	var year = new Date().getUTCFullYear();

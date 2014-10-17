@@ -46,3 +46,16 @@ exports.ipn = function(req, res) {
 		console.log('Paypal Message', req.body, err, msg);
 	});
 };
+
+exports.admin = function(req, res, next) {
+	tracking.getAllGuesses(function(err, raw) {
+		
+		var guesses = [];
+		raw.forEach(function(guess) {
+			var g = JSON.parse(guess);
+			guesses.push(g);
+		});
+
+		res.render('admin', { title: 'Admin - '+settings.applicationTitle, guesses: guesses });
+	});
+};
