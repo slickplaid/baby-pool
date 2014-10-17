@@ -17,16 +17,38 @@
 		<section id="thanks" class="row boxes box-4">
 			<div class="<%= settings.boxClass %>">
 				<h1><%= title %></h1>
-<% guesses.forEach(function(guess, i) { -%>
 				<div class="chart-container" style="color: #333">
-					<h2><%= guess.firstName %> <%= guess.lastName %></h2>
-					<ul>
-<% for(var _id in guess) { -%>
-						<li><%= _id %>: <%= guess[_id] %></li>
-<% } -%>
-					</ul>
-				</div><br>
-<% }) %>
+					<table class="table table-condensed table-striped table-bordered">
+						<thead>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Weight</th>
+							<th>Length</th>
+							<th>Hair</th>
+							<th>Eyes</th>
+							<th>Comment</th>
+						</thead>
+						<tbody>
+<% guesses.forEach(function(guess, i) { -%>
+							<tr>
+								<td><%= guess.firstName %> <%= guess.lastName %></td>
+								<td><a href="mailto:<%= guess.email %>"><%= guess.email %></a></td>
+								<td><%= guess.phone %></td>
+								<td><%= guess.date %></td>
+								<td><%= guess.time %></td>
+								<td><%= guess.weight %></td>
+								<td><%= guess.height %></td>
+								<td><%= guess.hair %></td>
+								<td><%= guess.eyes %></td>
+								<td><%= guess.comments %></td>
+							</tr>
+<% }) -%>
+						</tbody>
+					</table>
+				</div>
 				<p class="text-center button-bottom">
 					<a href="/" class="btn btn-primary btn-lg"><i class="fa fa-repeat"></i> Start Over</a>
 					<a href="/results" class="btn btn-success btn-lg skip-to-results"><i class="fa fa-mortar-board"></i> See results</a>
